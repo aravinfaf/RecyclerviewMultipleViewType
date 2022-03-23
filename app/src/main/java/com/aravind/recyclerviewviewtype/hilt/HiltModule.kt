@@ -1,0 +1,17 @@
+package com.aravind.recyclerviewviewtype.hilt
+
+import com.aravind.recyclerviewviewtype.remote.PlatformService
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+
+@Module
+@InstallIn(SingletonComponent::class)
+class HiltModule {
+
+    @Provides
+    fun providePlatformService() : PlatformService{
+        return PlatformService.create()
+    }
+}

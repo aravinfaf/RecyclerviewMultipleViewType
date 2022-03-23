@@ -1,36 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:cardUseCompatPadding="true">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <RelativeLayout
+    <data>
+
+    </data>
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent">
+        app:cardCornerRadius="15dp"
+        app:cardUseCompatPadding="true">
 
-
-        <TextView
-            android:layout_margin="10dp"
-            android:id="@+id/windowsTitle"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/allerta"
-            android:text="Android"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:layout_margin="10dp"
-            android:layout_below="@+id/windowsTitle"
-            android:id="@+id/windowsVersion"
-            android:layout_width="wrap_content"
-            android:text="OS Version"
-            android:fontFamily="@font/allerta"
-            android:textColor="@color/black"
-            android:layout_height="wrap_content"/>
 
-    </RelativeLayout>
-</androidx.cardview.widget.CardView>
+            <TextView
+                android:layout_margin="10dp"
+                android:id="@+id/windowsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/allerta"
+                android:text="Android"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_margin="10dp"
+                android:layout_below="@+id/windowsTitle"
+                android:id="@+id/windowsVersion"
+                android:layout_width="wrap_content"
+                android:text="OS Version"
+                android:fontFamily="@font/allerta"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

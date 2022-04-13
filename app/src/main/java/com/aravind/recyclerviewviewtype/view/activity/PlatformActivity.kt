@@ -21,7 +21,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.lang.Exception
 
 @AndroidEntryPoint
-class PlatformActivity : AppCompatActivity() {
+class PlatformActivity : AppCompatActivity(), PlatformAdapter.RecyclerviewClickListener {
 
     lateinit var binding : ActivityMainBinding
     private  val viewModel : PlatformViewmodel by viewModels()
@@ -35,7 +35,11 @@ class PlatformActivity : AppCompatActivity() {
         }
         viewModel.getPlatform()
         viewModel.listValue.observeForever{
-            binding.recyclerview.adapter = PlatformAdapter(it)
+            binding.recyclerview.adapter = PlatformAdapter(it,this)
         }
+    }
+
+    override fun clickedPosition(value: String) {
+        Toast.makeText(applicationContext,value,Toast.LENGTH_LONG).show()
     }
 }

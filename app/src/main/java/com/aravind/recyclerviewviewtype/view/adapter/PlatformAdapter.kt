@@ -1,5 +1,6 @@
 package com.aravind.recyclerviewviewtype.view.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -11,7 +12,7 @@ import com.aravind.recyclerviewviewtype.model.IOS
 import com.aravind.recyclerviewviewtype.model.Platform
 import com.aravind.recyclerviewviewtype.model.Windows
 
-class PlatformAdapter(private val list : List<Platform>) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+class PlatformAdapter(private val list : List<Platform>, val listener : RecyclerviewClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     companion object {
         const val VIEW_TYPE_ONE = 1
@@ -19,11 +20,14 @@ class PlatformAdapter(private val list : List<Platform>) : RecyclerView.Adapter<
     }
 
     inner class AndroidViewHolder(private val binding : ItemAndroidBinding) : RecyclerView.ViewHolder(binding.root){
-
         fun setAndroidData(androidPlatform : Android){
             binding.androidImage.setImageResource(androidPlatform.image)
             binding.androidTitle.text = androidPlatform.os
             binding.androidVersion.text = androidPlatform.version
+
+            binding.androidTitle.setOnClickListener {
+                listener.clickedPosition(androidPlatform.version)
+            }
         }
     }
 
@@ -65,5 +69,9 @@ class PlatformAdapter(private val list : List<Platform>) : RecyclerView.Adapter<
 
     override fun getItemViewType(position: Int): Int {
         return list[position].type
+    }
+
+    interface RecyclerviewClickListener{
+        fun clickedPosition(value : String)
     }
 }
